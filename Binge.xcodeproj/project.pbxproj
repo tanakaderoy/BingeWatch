@@ -3,27 +3,59 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		760FE4BF91DC378D93575EE3 /* Pods_Binge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D51647D15EDE6AB478AA69 /* Pods_Binge.framework */; };
+		BAE7D9572347B2760031683D /* ProviderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7D9562347B2760031683D /* ProviderTableViewCell.swift */; };
+		BAE7D9592347B2980031683D /* ProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7D9582347B2980031683D /* ProviderViewController.swift */; };
+		BAE7D97B2347E7D00031683D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7D97A2347E7D00031683D /* SceneDelegate.swift */; };
 		BAE935492343F60E008FC1CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE935482343F60E008FC1CE /* AppDelegate.swift */; };
-		BAE9354B2343F60E008FC1CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9354A2343F60E008FC1CE /* SceneDelegate.swift */; };
-		BAE9354D2343F60E008FC1CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9354C2343F60E008FC1CE /* ViewController.swift */; };
 		BAE935502343F60E008FC1CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE9354E2343F60E008FC1CE /* Main.storyboard */; };
 		BAE935522343F611008FC1CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE935512343F611008FC1CE /* Assets.xcassets */; };
 		BAE935552343F611008FC1CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAE935532343F611008FC1CE /* LaunchScreen.storyboard */; };
+		BAE935602343FE58008FC1CE /* TvShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9355F2343FE58008FC1CE /* TvShowTableViewCell.swift */; };
+		BAE935642343FEF4008FC1CE /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE935632343FEF4008FC1CE /* TrendingViewController.swift */; };
+		BAE9356623440322008FC1CE /* TheMovieDatabaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9356523440322008FC1CE /* TheMovieDatabaseAPI.swift */; };
+		BAE935682344049F008FC1CE /* TrendingShowsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE935672344049F008FC1CE /* TrendingShowsModel.swift */; };
+		BAE9356A234540A5008FC1CE /* SearchShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE93569234540A5008FC1CE /* SearchShowViewController.swift */; };
+		BAE9356C234543EE008FC1CE /* ShowSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9356B234543EE008FC1CE /* ShowSearchModel.swift */; };
+		BAE9356E23465682008FC1CE /* SeasonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9356D23465682008FC1CE /* SeasonCollectionViewCell.swift */; };
+		BAE9357023465998008FC1CE /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9356F23465998008FC1CE /* ShowViewController.swift */; };
+		BAE9357223465ECF008FC1CE /* TvShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9357123465ECF008FC1CE /* TvShowModel.swift */; };
+		BAE9357423469584008FC1CE /* SeasonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9357323469584008FC1CE /* SeasonModel.swift */; };
+		BAE9357623469AC7008FC1CE /* SeasonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9357523469AC7008FC1CE /* SeasonInfoViewController.swift */; };
+		BAE935782346A1D3008FC1CE /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE935772346A1D3008FC1CE /* EpisodeTableViewCell.swift */; };
+		BAE9357D234719CC008FC1CE /* ShowJWModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE9357C234719CC008FC1CE /* ShowJWModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		77D51647D15EDE6AB478AA69 /* Pods_Binge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Binge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA2E0763085CBA5783188D1F /* Pods-Binge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Binge.release.xcconfig"; path = "Pods/Target Support Files/Pods-Binge/Pods-Binge.release.xcconfig"; sourceTree = "<group>"; };
+		BAE7D9562347B2760031683D /* ProviderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderTableViewCell.swift; sourceTree = "<group>"; };
+		BAE7D9582347B2980031683D /* ProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderViewController.swift; sourceTree = "<group>"; };
+		BAE7D97A2347E7D00031683D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BAE935452343F60E008FC1CE /* Binge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Binge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE935482343F60E008FC1CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BAE9354A2343F60E008FC1CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BAE9354C2343F60E008FC1CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BAE9354F2343F60E008FC1CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BAE935512343F611008FC1CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAE935542343F611008FC1CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAE935562343F611008FC1CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAE9355F2343FE58008FC1CE /* TvShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowTableViewCell.swift; sourceTree = "<group>"; };
+		BAE935632343FEF4008FC1CE /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
+		BAE9356523440322008FC1CE /* TheMovieDatabaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovieDatabaseAPI.swift; sourceTree = "<group>"; };
+		BAE935672344049F008FC1CE /* TrendingShowsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingShowsModel.swift; sourceTree = "<group>"; };
+		BAE93569234540A5008FC1CE /* SearchShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchShowViewController.swift; sourceTree = "<group>"; };
+		BAE9356B234543EE008FC1CE /* ShowSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSearchModel.swift; sourceTree = "<group>"; };
+		BAE9356D23465682008FC1CE /* SeasonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCollectionViewCell.swift; sourceTree = "<group>"; };
+		BAE9356F23465998008FC1CE /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
+		BAE9357123465ECF008FC1CE /* TvShowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowModel.swift; sourceTree = "<group>"; };
+		BAE9357323469584008FC1CE /* SeasonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonModel.swift; sourceTree = "<group>"; };
+		BAE9357523469AC7008FC1CE /* SeasonInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonInfoViewController.swift; sourceTree = "<group>"; };
+		BAE935772346A1D3008FC1CE /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
+		BAE9357C234719CC008FC1CE /* ShowJWModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowJWModel.swift; sourceTree = "<group>"; };
+		D4F3EE0BE2798D851CDCFB8C /* Pods-Binge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Binge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Binge/Pods-Binge.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				760FE4BF91DC378D93575EE3 /* Pods_Binge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +75,8 @@
 			children = (
 				BAE935472343F60E008FC1CE /* Binge */,
 				BAE935462343F60E008FC1CE /* Products */,
+				F1E7FBF52920E3FADF3AABF2 /* Pods */,
+				C488C4E3CE98F440CEE8EE10 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +91,70 @@
 		BAE935472343F60E008FC1CE /* Binge */ = {
 			isa = PBXGroup;
 			children = (
+				BAE9355E2343FE1D008FC1CE /* Controller */,
+				BAE9355D2343FE14008FC1CE /* Views */,
+				BAE9355C2343FE06008FC1CE /* Models */,
 				BAE935482343F60E008FC1CE /* AppDelegate.swift */,
-				BAE9354A2343F60E008FC1CE /* SceneDelegate.swift */,
-				BAE9354C2343F60E008FC1CE /* ViewController.swift */,
+				BAE7D97A2347E7D00031683D /* SceneDelegate.swift */,
 				BAE9354E2343F60E008FC1CE /* Main.storyboard */,
 				BAE935512343F611008FC1CE /* Assets.xcassets */,
 				BAE935532343F611008FC1CE /* LaunchScreen.storyboard */,
 				BAE935562343F611008FC1CE /* Info.plist */,
 			);
 			path = Binge;
+			sourceTree = "<group>";
+		};
+		BAE9355C2343FE06008FC1CE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BAE935672344049F008FC1CE /* TrendingShowsModel.swift */,
+				BAE9356B234543EE008FC1CE /* ShowSearchModel.swift */,
+				BAE9357123465ECF008FC1CE /* TvShowModel.swift */,
+				BAE9357323469584008FC1CE /* SeasonModel.swift */,
+				BAE9357C234719CC008FC1CE /* ShowJWModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BAE9355D2343FE14008FC1CE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BAE9355F2343FE58008FC1CE /* TvShowTableViewCell.swift */,
+				BAE9356D23465682008FC1CE /* SeasonCollectionViewCell.swift */,
+				BAE935772346A1D3008FC1CE /* EpisodeTableViewCell.swift */,
+				BAE7D9562347B2760031683D /* ProviderTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BAE9355E2343FE1D008FC1CE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BAE935632343FEF4008FC1CE /* TrendingViewController.swift */,
+				BAE9356523440322008FC1CE /* TheMovieDatabaseAPI.swift */,
+				BAE93569234540A5008FC1CE /* SearchShowViewController.swift */,
+				BAE9356F23465998008FC1CE /* ShowViewController.swift */,
+				BAE9357523469AC7008FC1CE /* SeasonInfoViewController.swift */,
+				BAE7D9582347B2980031683D /* ProviderViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C488C4E3CE98F440CEE8EE10 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77D51647D15EDE6AB478AA69 /* Pods_Binge.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1E7FBF52920E3FADF3AABF2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4F3EE0BE2798D851CDCFB8C /* Pods-Binge.debug.xcconfig */,
+				AA2E0763085CBA5783188D1F /* Pods-Binge.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +164,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BAE935592343F611008FC1CE /* Build configuration list for PBXNativeTarget "Binge" */;
 			buildPhases = (
+				FD66329E7DC6A5DD4DE2645D /* [CP] Check Pods Manifest.lock */,
 				BAE935412343F60E008FC1CE /* Sources */,
 				BAE935422343F60E008FC1CE /* Frameworks */,
 				BAE935432343F60E008FC1CE /* Resources */,
+				217E3FC3967414ADF07731A4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,14 +225,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		217E3FC3967414ADF07731A4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Binge/Pods-Binge-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Binge/Pods-Binge-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Binge/Pods-Binge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD66329E7DC6A5DD4DE2645D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Binge-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BAE935412343F60E008FC1CE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAE9354D2343F60E008FC1CE /* ViewController.swift in Sources */,
+				BAE9357623469AC7008FC1CE /* SeasonInfoViewController.swift in Sources */,
+				BAE935782346A1D3008FC1CE /* EpisodeTableViewCell.swift in Sources */,
+				BAE9356C234543EE008FC1CE /* ShowSearchModel.swift in Sources */,
 				BAE935492343F60E008FC1CE /* AppDelegate.swift in Sources */,
-				BAE9354B2343F60E008FC1CE /* SceneDelegate.swift in Sources */,
+				BAE7D9572347B2760031683D /* ProviderTableViewCell.swift in Sources */,
+				BAE9357423469584008FC1CE /* SeasonModel.swift in Sources */,
+				BAE935682344049F008FC1CE /* TrendingShowsModel.swift in Sources */,
+				BAE7D97B2347E7D00031683D /* SceneDelegate.swift in Sources */,
+				BAE9356623440322008FC1CE /* TheMovieDatabaseAPI.swift in Sources */,
+				BAE9356A234540A5008FC1CE /* SearchShowViewController.swift in Sources */,
+				BAE9357023465998008FC1CE /* ShowViewController.swift in Sources */,
+				BAE9357223465ECF008FC1CE /* TvShowModel.swift in Sources */,
+				BAE9357D234719CC008FC1CE /* ShowJWModel.swift in Sources */,
+				BAE9356E23465682008FC1CE /* SeasonCollectionViewCell.swift in Sources */,
+				BAE935642343FEF4008FC1CE /* TrendingViewController.swift in Sources */,
+				BAE7D9592347B2980031683D /* ProviderViewController.swift in Sources */,
+				BAE935602343FE58008FC1CE /* TvShowTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,37 +426,43 @@
 		};
 		BAE9355A2343F611008FC1CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4F3EE0BE2798D851CDCFB8C /* Pods-Binge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J3NVQ5AFC2;
 				INFOPLIST_FILE = Binge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"$(TOOLCHAIN_DIR)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tanakamazivanhanga.Binge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		BAE9355B2343F611008FC1CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA2E0763085CBA5783188D1F /* Pods-Binge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J3NVQ5AFC2;
 				INFOPLIST_FILE = Binge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"$(TOOLCHAIN_DIR)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tanakamazivanhanga.Binge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

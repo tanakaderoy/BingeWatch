@@ -2,12 +2,13 @@
 //  SceneDelegate.swift
 //  Binge
 //
-//  Created by Tanaka Mazivanhanga on 10/1/19.
+//  Created by Tanaka Mazivanhanga on 10/4/19.
 //  Copyright © 2019 Tanaka Mazivanhanga. All rights reserved.
 //
 
 import UIKit
 
+@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
