@@ -49,6 +49,7 @@ class SearchShowViewController: UIViewController {
         searchBar.delegate = self
         // Do any additional setup after loading the view.
         tableView.keyboardDismissMode = .onDrag
+        tabBarController?.delegate = self
 
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
@@ -56,6 +57,7 @@ class SearchShowViewController: UIViewController {
         rightSwipe.direction = .right
         self.view.addGestureRecognizer(leftSwipe)
         self.view.addGestureRecognizer(rightSwipe)
+        searchBar.barStyle = .blackTranslucent
         setupLongPressGesture()
         setUpTapGesture()
 
@@ -97,11 +99,18 @@ class SearchShowViewController: UIViewController {
     }
     @objc func handleSwipes(_ sender:UISwipeGestureRecognizer) {
         if sender.direction == .left {
-            self.tabBarController!.selectedIndex += 1
-        }
-        if sender.direction == .right {
-            self.tabBarController!.selectedIndex -= 1
-        }
+                    let index = self.tabBarController!.selectedIndex + 1
+
+                    _ = tabBarController(self.tabBarController!, shouldSelect: self.tabBarController!.viewControllers![index])
+        self.tabBarController!.selectedIndex = index
+
+                }
+                if sender.direction == .right {
+                     let index = self.tabBarController!.selectedIndex - 1
+
+                    _ = tabBarController(self.tabBarController!, shouldSelect: self.tabBarController!.viewControllers![index])
+                    self.tabBarController!.selectedIndex = index
+                }
     }
     
 
@@ -137,7 +146,7 @@ extension SearchShowViewController: UITableViewDelegate, UITableViewDataSource {
         let show = shows[indexPath.row]
 
         cell.tvShowSearchNameLabel.text = show.name
-        cell.tvShowSearchNameLabel.backgroundColor =  UIColor(white: 1, alpha: 0.5)
+        cell.tvShowSearchNameLabel.backgroundColor =  UIColor(white: 0, alpha: 0.5)
         if let posterPath = show.posterPath, let airdate = show.firstAirDate, let backdropPath = show.backdropPath {
             let url = URL(string: imageBaseUrl+posterPath)
             cell.searchPosterImageView.kf.setImage(with: url)
@@ -155,10 +164,10 @@ extension SearchShowViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         cell.ratingSearchLabel.text = String(show.voteAverage)
-        cell.ratingSearchLabel.backgroundColor =  UIColor(white: 1, alpha: 0.5)
-        cell.tvShowSearchFirstAirdateLabel.backgroundColor =  UIColor(white: 1, alpha: 0.5)
+        cell.ratingSearchLabel.backgroundColor =  UIColor(white: 0, alpha: 0.5)
+        cell.tvShowSearchFirstAirdateLabel.backgroundColor =  UIColor(white: 0, alpha: 0.5)
         cell.searchSummaryTextView.text = show.overview
-        cell.searchSummaryTextView.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        cell.searchSummaryTextView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         cell.selectionStyle = .none
 
         return cell
@@ -198,4 +207,20 @@ extension SearchShowViewController: UISearchBarDelegate {
         view.endEditing(true)
     }
 
+}
+
+extension SearchShowViewController: UITabBarControllerDelegate {
+    public func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+
+           let fromView: UIView = tabBarController.selectedViewController!.view
+           let toView  : UIView = viewController.view
+           if fromView == toView {
+                 return false
+           }
+
+        UIView.transition(from: fromView, to: toView, duration: 0.3, options: UIView.AnimationOptions.transitionCrossDissolve) { (finished:Bool) in
+
+        }
+        return true
+   }
 }

@@ -132,8 +132,8 @@
 		BAE9355E2343FE1D008FC1CE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BAE935632343FEF4008FC1CE /* TrendingViewController.swift */,
 				BAC61660235A4A47006F6752 /* Util.swift */,
+				BAE935632343FEF4008FC1CE /* TrendingViewController.swift */,
 				BAE9356523440322008FC1CE /* TheMovieDatabaseAPI.swift */,
 				BAE93569234540A5008FC1CE /* SearchShowViewController.swift */,
 				BAE9356F23465998008FC1CE /* ShowViewController.swift */,

@@ -158,7 +158,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrc-vW-Cyi">
                                 <rect key="frame" x="0.0" y="783" width="414" height="30"/>
-                                <state key="normal" title="Binge🎲"/>
+                                <state key="normal" title="Pick For Me 🎲"/>
                                 <connections>
                                     <action selector="bingeButtonPressed:" destination="jQ2-aR-ya5" eventType="touchUpInside" id="tjS-mA-HkU"/>
                                 </connections>
@@ -542,7 +542,7 @@
         <image name="search" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aYQ-6o-Jj8"/>
+        <segue reference="0aV-sd-cC8"/>
         <segue reference="lDW-i2-czE"/>
     </inferredMetricsTieBreakers>
 </document>

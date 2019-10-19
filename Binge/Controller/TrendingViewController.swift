@@ -40,6 +40,7 @@ class TrendingViewController: UIViewController, UIGestureRecognizerDelegate {
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         leftSwipe.direction = .left
         rightSwipe.direction = .right
+        tabBarController?.delegate = self
         self.view.addGestureRecognizer(leftSwipe)
         self.view.addGestureRecognizer(rightSwipe)
 setupLongPressGesture()
@@ -85,10 +86,17 @@ setupLongPressGesture()
 
     @objc func handleSwipes(_ sender:UISwipeGestureRecognizer) {
         if sender.direction == .left {
-            self.tabBarController!.selectedIndex += 1
+            let index = self.tabBarController!.selectedIndex + 1
+
+            _ = tabBarController(self.tabBarController!, shouldSelect: self.tabBarController!.viewControllers![index])
+self.tabBarController!.selectedIndex = index
+
         }
         if sender.direction == .right {
-            self.tabBarController!.selectedIndex -= 1
+             let index = self.tabBarController!.selectedIndex - 1
+
+            _ = tabBarController(self.tabBarController!, shouldSelect: self.tabBarController!.viewControllers![index])
+            self.tabBarController!.selectedIndex = index
         }
     }
     
@@ -127,15 +135,15 @@ extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "trendingShowCell", for: indexPath) as! TvShowTableViewCell
         let show = shows[indexPath.row]
         cell.tvShowNameLabel.text = show.name
-        cell.tvShowNameLabel.backgroundColor =  UIColor(white: 1, alpha: 0.5)
+        cell.tvShowNameLabel.backgroundColor =  UIColor(white: 0, alpha: 0.5)
         let url = URL(string: imageBaseUrl+show.posterPath)
         cell.posterImageView.kf.setImage(with: url)
         cell.ratingLabel.text = String(show.voteAverage)
-        cell.ratingLabel.backgroundColor =  UIColor(white: 1, alpha: 0.5)
-        cell.tvShowFirstAirdateLabel.backgroundColor =  UIColor(white: 1, alpha: 0.5)
+        cell.ratingLabel.backgroundColor =  UIColor(white: 0, alpha: 0.5)
+        cell.tvShowFirstAirdateLabel.backgroundColor =  UIColor(white: 0, alpha: 0.5)
         cell.tvShowFirstAirdateLabel.text = getYearFromDateString(dateString: show.firstAirDate)
         cell.summaryLabel.text = show.overview
-        cell.summaryLabel.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        cell.summaryLabel.backgroundColor = UIColor(white: 0, alpha: 0.5)
         let backgroundImage = UIImageView(frame: cell.bounds)
         backgroundImage.kf.setImage(with: URL(string:imageBaseURLChooseSize+ImageSize.original.rawValue+show.backdropPath))
         backgroundImage.contentMode = .scaleAspectFill
@@ -151,4 +159,20 @@ extension TrendingViewController: ResourceObserver {
     func resourceChanged(_ resource: Siesta.Resource, event: ResourceEvent) {
         shows = resource.typedContent() ?? []
     }
+}
+
+extension TrendingViewController: UITabBarControllerDelegate {
+    public func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+
+           let fromView: UIView = tabBarController.selectedViewController!.view
+           let toView  : UIView = viewController.view
+           if fromView == toView {
+                 return false
+           }
+
+        UIView.transition(from: fromView, to: toView, duration: 0.3, options: UIView.AnimationOptions.transitionCrossDissolve) { (finished:Bool) in
+
+        }
+        return true
+   }
 }
