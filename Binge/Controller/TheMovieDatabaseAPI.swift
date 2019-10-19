@@ -33,33 +33,43 @@ class TMDBAPI {
         }
     }
     func getSeasonInfo(showId id:String, seasonNumber num:String) -> Resource{
-return service
-        .resource("/tv")
-        .child(id)
-        .child("/season")
-        .child(num)
-        .withParam("api_key", apiKey)
+        return service
+            .resource("/tv")
+            .child(id)
+            .child("/season")
+            .child(num)
+            .withParam("api_key", apiKey)
+    }
+    func getEpisode(showId id: String, season: String, episodeNumber: String) -> Resource {
+        return service
+            .resource("/tv")
+            .child(id)
+            .child("/season")
+            .child(season)
+            .child("/episode")
+            .child(episodeNumber)
+            .withParam("api_key", apiKey)
     }
 
     func getShow(showId id: String) -> Resource{
         return service
             .resource("/tv")
-        .child(id)
-        .withParam("api_key", apiKey)
+            .child(id)
+            .withParam("api_key", apiKey)
 
     }
     
 
     func getTrendingShows() -> Resource {
         return service
-        .resource("/trending/tv/week")
-        .withParam("api_key", apiKey)
+            .resource("/trending/tv/week")
+            .withParam("api_key", apiKey)
     }
     func searchWithQuery(searchQuery query: String) -> Resource {
         let result = service
-        .resource("/search/tv")
-        .withParam("api_key", apiKey)
-        .withParam("query", query)
+            .resource("/search/tv")
+            .withParam("api_key", apiKey)
+            .withParam("query", query)
         return result
     }
 }
@@ -90,8 +100,8 @@ class JustWatchAPI {
             print(error)
         }
         guard let body = bodyParam else{return nil}
-       return service
-        .resource("content/titles/en_US/popular").request(.post, data: body, contentType: "application/json")
+        return service
+            .resource("content/titles/en_US/popular").request(.post, data: body, contentType: "application/json")
 
     }
 }

@@ -11,7 +11,7 @@ import Siesta
 import Kingfisher
 
 class TrendingViewController: UIViewController, UIGestureRecognizerDelegate {
-    let imageBaseUrl = "https://image.tmdb.org/t/p/w500"
+   
     @IBOutlet weak var tableView: UITableView!
     private var shows: [TvShowResult] = [] {
         didSet {
@@ -133,10 +133,11 @@ extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
         cell.ratingLabel.text = String(show.voteAverage)
         cell.ratingLabel.backgroundColor =  UIColor(white: 1, alpha: 0.5)
         cell.tvShowFirstAirdateLabel.backgroundColor =  UIColor(white: 1, alpha: 0.5)
+        cell.tvShowFirstAirdateLabel.text = getYearFromDateString(dateString: show.firstAirDate)
         cell.summaryLabel.text = show.overview
         cell.summaryLabel.backgroundColor = UIColor(white: 1, alpha: 0.5)
         let backgroundImage = UIImageView(frame: cell.bounds)
-        backgroundImage.kf.setImage(with: URL(string:imageBaseUrl+show.backdropPath))
+        backgroundImage.kf.setImage(with: URL(string:imageBaseURLChooseSize+ImageSize.original.rawValue+show.backdropPath))
         backgroundImage.contentMode = .scaleAspectFill
         cell.backgroundView = backgroundImage
         cell.selectionStyle = .none

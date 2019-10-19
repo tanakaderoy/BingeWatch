@@ -14,7 +14,6 @@ class SearchShowViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     var offers = [Offer]()
 
-    let imageBaseUrl = "https://image.tmdb.org/t/p/w500"
 
     private var shows: [ShowSearchResult] = [] {
         didSet {
@@ -36,12 +35,20 @@ class SearchShowViewController: UIViewController {
         }
     }
     private var statusOverlay = ResourceStatusOverlay()
+    fileprivate func setUpTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tap.numberOfTapsRequired = 1
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         statusOverlay.embed(in: self)
         tvShowListResource = TMDBAPI.sharedInstance.getTrendingShows()
         searchBar.delegate = self
         // Do any additional setup after loading the view.
+        tableView.keyboardDismissMode = .onDrag
 
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
@@ -50,8 +57,12 @@ class SearchShowViewController: UIViewController {
         self.view.addGestureRecognizer(leftSwipe)
         self.view.addGestureRecognizer(rightSwipe)
         setupLongPressGesture()
-    }
+        setUpTapGesture()
 
+    }
+    @objc func handleTap(){
+        self.searchBar.resignFirstResponder()
+    }
     func setupLongPressGesture() {
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(sender:)))
         self.view.addGestureRecognizer(longPressRecognizer)
@@ -130,9 +141,10 @@ extension SearchShowViewController: UITableViewDelegate, UITableViewDataSource {
         if let posterPath = show.posterPath, let airdate = show.firstAirDate, let backdropPath = show.backdropPath {
             let url = URL(string: imageBaseUrl+posterPath)
             cell.searchPosterImageView.kf.setImage(with: url)
-            cell.tvShowSearchFirstAirdateLabel.text = airdate
+            cell.tvShowSearchFirstAirdateLabel.text = getYearFromDateString(dateString: airdate)
             let backgroundImage = UIImageView(frame: cell.bounds)
-            backgroundImage.kf.setImage(with: URL(string:imageBaseUrl+backdropPath))
+            
+            backgroundImage.kf.setImage(with: URL(string:imageBaseURLChooseSize+ImageSize.original.rawValue+show.backdropPath!))
             backgroundImage.contentMode = .scaleAspectFill
             cell.backgroundView = backgroundImage
         }else{

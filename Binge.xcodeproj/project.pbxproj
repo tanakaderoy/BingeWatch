@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		760FE4BF91DC378D93575EE3 /* Pods_Binge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D51647D15EDE6AB478AA69 /* Pods_Binge.framework */; };
+		BAC61661235A4A47006F6752 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC61660235A4A47006F6752 /* Util.swift */; };
 		BAE7D9572347B2760031683D /* ProviderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7D9562347B2760031683D /* ProviderTableViewCell.swift */; };
 		BAE7D9592347B2980031683D /* ProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7D9582347B2980031683D /* ProviderViewController.swift */; };
 		BAE7D97B2347E7D00031683D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7D97A2347E7D00031683D /* SceneDelegate.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		77D51647D15EDE6AB478AA69 /* Pods_Binge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Binge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA2E0763085CBA5783188D1F /* Pods-Binge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Binge.release.xcconfig"; path = "Pods/Target Support Files/Pods-Binge/Pods-Binge.release.xcconfig"; sourceTree = "<group>"; };
+		BAC61660235A4A47006F6752 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		BAE7D9562347B2760031683D /* ProviderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderTableViewCell.swift; sourceTree = "<group>"; };
 		BAE7D9582347B2980031683D /* ProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderViewController.swift; sourceTree = "<group>"; };
 		BAE7D97A2347E7D00031683D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				BAE935632343FEF4008FC1CE /* TrendingViewController.swift */,
+				BAC61660235A4A47006F6752 /* Util.swift */,
 				BAE9356523440322008FC1CE /* TheMovieDatabaseAPI.swift */,
 				BAE93569234540A5008FC1CE /* SearchShowViewController.swift */,
 				BAE9356F23465998008FC1CE /* ShowViewController.swift */,
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAE9357623469AC7008FC1CE /* SeasonInfoViewController.swift in Sources */,
+				BAC61661235A4A47006F6752 /* Util.swift in Sources */,
 				BAE935782346A1D3008FC1CE /* EpisodeTableViewCell.swift in Sources */,
 				BAE9356C234543EE008FC1CE /* ShowSearchModel.swift in Sources */,
 				BAE935492343F60E008FC1CE /* AppDelegate.swift in Sources */,

@@ -16,22 +16,25 @@ class ShowViewController: UIViewController {
     @IBOutlet weak var networkLogoImageView: UIImageView!
     @IBOutlet weak var bingeButton: UIButton!
     
-    let imageBaseUrl = "https://image.tmdb.org/t/p/w500"
     var id: String?
+    var randomEpisode: String?
+    var sentSeasonNo: String?
+    var showName: String?
     var tvShow: TvShowModel? {
         didSet{
             if let show = tvShow{
                 self.seasons = show.seasons!
+                showName = show.name
                 tvShowInfoNameLabel.text = show.name
                 navigationItem.title = show.name
                 self.collectionView.reloadData()
                 if let backdropPath = show.backdropPath{
-                    backdropImageView.kf.setImage(with: URL(string: imageBaseUrl+backdropPath))
+                    backdropImageView.kf.setImage(with: URL(string: imageBaseURLChooseSize+ImageSize.original.rawValue+backdropPath))
                 }
                 if let networks = show.networks{
                     guard let network = networks.first else{return}
                     if let logoPath = network.logoPath{
-                        networkLogoImageView.backgroundColor = .white
+                        networkLogoImageView.backgroundColor = UIColor(white: 1, alpha: 0.1)
                         networkLogoImageView.kf.setImage(with: URL(string: imageBaseUrl+logoPath))
                     }
                 }
@@ -80,6 +83,28 @@ class ShowViewController: UIViewController {
         statusOverlay.positionToCoverParent()
     }
 
+    @IBAction func bingeButtonPressed(_ sender: UIButton) {
+        if let season = seasons.randomElement(), let seasonNumber = season.seasonNumber, let episodeCount = season.episodeCount{
+            randomEpisode = String(arc4random_uniform(UInt32(episodeCount)))
+            sentSeasonNo = String(seasonNumber)
+
+
+             print("peform binge")
+            if #available(iOS 13.0, *) {
+                let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "seasonInfo") as! SeasonInfoViewController
+                vc.id = String(self.id!)
+                vc.showName = showName
+                            vc.seasonNumber = sentSeasonNo
+                            vc.episode = randomEpisode
+                navigationController?.pushViewController(vc, animated: true)
+            } else {
+                // Fallback on earlier versions
+            }
+
+
+        }
+        
+    }
 
     fileprivate let collectionView:UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -103,8 +128,9 @@ class ShowViewController: UIViewController {
             guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return}
             let season = seasons[indexPath.row]
             vc.seasonNumber = String(season.seasonNumber!)
-
-        vc.id = String(self.id!)
+            vc.id = String(self.id!)
+            vc.showName = showName
+            print("peform showseason")
         }
      }
 

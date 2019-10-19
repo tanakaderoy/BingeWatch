@@ -141,7 +141,7 @@ class Urls: Codable {
     enum CodingKeys: String, CodingKey {
         case standardWeb = "standard_web"
         case deeplinkAndroid = "deeplink_android"
-        case deeplinkIos = "deeplink_ios"
+        case deeplinkIos = "deeplink_tvos"
         case deeplinkAndroidTv = "deeplink_android_tv"
     }
 

@@ -10,23 +10,38 @@ import UIKit
 import Siesta
 import Kingfisher
 
+enum ImageSize: String {
+    case w92 = "w92"
+    case w154 = "w154"
+    case w185 = "w185"
+    case w342 = "w342"
+    case w500 = "w500"
+    case w780 = "w780"
+    case original = "original"
+}
 
 
 class SeasonInfoViewController: UIViewController {
     var id: String?
     var seasonNumber: String?
-    let imageBaseUrl = "https://image.tmdb.org/t/p/w500"
+    var showName: String?
     @IBOutlet weak var tableView: UITableView!
     var seasonInfo: SeasonModel? {
         didSet{
             if let season = seasonInfo{
                 self.episodes = season.episodes
                 navigationItem.title = "Season \(season.seasonNumber ?? 0)"
+                if let episode = episode{
+                    print("Episode: ", episodes[Int(episode)!].name)
+                        let indexPath = IndexPath(row: Int(episode) ?? 0, section: 0)
+                        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                }
 
                 //self.seasonNumber = String(season.seasonNumber!)
             }
         }
     }
+    var episode: String?
     private var episodes: [Episode] = [] {
         didSet {
             tableView.reloadData()
@@ -74,11 +89,43 @@ extension SeasonInfoViewController: UITableViewDelegate, UITableViewDataSource{
         return episodes.count
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let showName = showName{
+            JustWatchAPI.sharedInstance.searchForShow(showName: showName)?.onSuccess({ (entity) in
+                let showJW = entity.content as? ShowJWModel
+
+                if let showJW = showJW{
+
+                    if let offers = showJW.items.first?.offers{
+                        print("offers: ",offers)
+                        if #available(iOS 13.0, *) {
+                            if let vc = self.storyboard?.instantiateViewController(identifier: "provider") as? ProviderViewController{
+                                vc.offers = offers
+                                self.present(vc, animated: true, completion: nil)
+                            }
+                        } else {
+                            // Fallback on earlier versions
+                        }
+
+
+
+
+                    }
+                }
+            }).onFailure({ (error) in
+                print(error)
+            })
+            // your code here, get the row for the indexPath or do whatever you want
+        }
+    }
+    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "episodeCell", for: indexPath) as! EpisodeTableViewCell
         let episode = episodes[indexPath.row]
-        cell.episodeTitleLabel.text = episode.name ?? "adsa"
-        cell.episodeOverViewLabel.text = episode.overview ?? "asds"
+        cell.episodeTitleLabel.text = episode.name ?? "N/A"
+        cell.episodeOverViewLabel.text = episode.overview ?? "N/A"
+        cell.episodeAirdateLabel.text = episode.airDate ?? "N/A"
         if let stillPath = episode.stillPath{
             cell.episodeImageView.kf.setImage(with: URL(string: imageBaseUrl+stillPath))
         }

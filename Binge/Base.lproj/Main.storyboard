@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NeD-Vw-QMC">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -157,7 +158,10 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrc-vW-Cyi">
                                 <rect key="frame" x="0.0" y="783" width="414" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Binge🎲"/>
+                                <connections>
+                                    <action selector="bingeButtonPressed:" destination="jQ2-aR-ya5" eventType="touchUpInside" id="tjS-mA-HkU"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7lz-3x-Wma">
                                 <rect key="frame" x="314" y="238" width="100" height="100"/>
@@ -207,7 +211,7 @@
         <!--Season Info View Controller-->
         <scene sceneID="N8U-3w-YB5">
             <objects>
-                <viewController id="psp-wq-DCb" customClass="SeasonInfoViewController" customModule="Binge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="seasonInfo" id="psp-wq-DCb" customClass="SeasonInfoViewController" customModule="Binge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wLn-6X-b4s">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -276,7 +280,6 @@
                                             <outlet property="episodeImageView" destination="sMq-eM-ez4" id="WGW-2W-Era"/>
                                             <outlet property="episodeOverViewLabel" destination="KqX-QN-1Um" id="5ix-vV-cIP"/>
                                             <outlet property="episodeTitleLabel" destination="sH9-Su-usJ" id="wS1-LI-H9v"/>
-                                            <segue destination="XUM-2p-vli" kind="presentation" identifier="episodeToProvider" id="n6R-ym-Iuu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -307,7 +310,7 @@
         <!--Provider View Controller-->
         <scene sceneID="ZKV-Xf-N0U">
             <objects>
-                <viewController id="XUM-2p-vli" customClass="ProviderViewController" customModule="Binge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="provider" id="XUM-2p-vli" customClass="ProviderViewController" customModule="Binge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y2W-by-N4m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -539,7 +542,7 @@
         <image name="search" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0aV-sd-cC8"/>
+        <segue reference="aYQ-6o-Jj8"/>
         <segue reference="lDW-i2-czE"/>
     </inferredMetricsTieBreakers>
 </document>

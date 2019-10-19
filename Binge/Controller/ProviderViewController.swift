@@ -33,7 +33,7 @@ class ProviderViewController: UIViewController , UITableViewDelegate, UITableVie
           let cell = tableView.dequeueReusableCell(withIdentifier: "providerCell", for: indexPath) as! ProviderTableViewCell
           let provider = offers[indexPath.row]
 
-        let pattern = #"(?:[-a-zA-Z0-9@:%_\+~.#=]{2,256}\.)?([-a-zA-Z0-9@:%_\+~#=]*)\.[a-z]{2,6}\b(?:[-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)"#
+        let pattern = #"[l-p]\w\w\w\.\w++|[a-d]\w\w\w[m-o]\w|(?<=\.)\w[^com]\w++|itunes|\w\w\w\w\w\w\w\w\w[l-p]\w|(?<=:\/\/)\w\w\w\w\w[^_]|\w[com]\w\w[m-o]\w|amc"#
           cell.providerNameLabel.text = "Provider \(indexPath.row + 1)"
         print("Urls", provider.urls.standardWeb)
           if let deepLinkURL = provider.urls.deeplinkIos{
@@ -51,8 +51,8 @@ cell.providerNameLabel.text = "Provider: Prime Video"
 
             var url = URL(string: provider.urls.standardWeb)
             var domain = url!.host!
-            domain = domain.regex(pattern: pattern).first!
-            cell.providerNameLabel.text = "Provider: \(domain)"
+            domain = domain.regex(pattern: pattern).first ?? ""
+            cell.providerNameLabel.text = "Provider: \(domain.capitalizingFirstLetter())"
           }
 
           return cell
