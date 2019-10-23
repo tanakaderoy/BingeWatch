@@ -11,20 +11,17 @@ import UIKit
 class SeasonCollectionViewCell: UICollectionViewCell {
     
     let seasonPosterImageView: UIImageView = {
-       let iv = UIImageView()
+        let iv = UIImageView()
 
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
-                //iv.layer.cornerRadius = 12
+        //iv.layer.cornerRadius = 12
         return iv
     }()
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-
-
-
 
         contentView.addSubview(seasonPosterImageView)
 

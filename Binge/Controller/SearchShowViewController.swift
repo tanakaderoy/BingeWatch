@@ -13,14 +13,14 @@ class SearchShowViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     var offers = [Offer]()
-
-
+    
+    
     private var shows: [ShowSearchResult] = [] {
         didSet {
             tableView.reloadData()
         }
     }
-
+    
     var tvShowListResource: Siesta.Resource? {
         didSet{
             oldValue?.removeObservers(ownedBy: self)
@@ -41,7 +41,7 @@ class SearchShowViewController: UIViewController {
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         statusOverlay.embed(in: self)
@@ -50,7 +50,7 @@ class SearchShowViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.keyboardDismissMode = .onDrag
         tabBarController?.delegate = self
-
+        
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         leftSwipe.direction = .left
@@ -60,7 +60,7 @@ class SearchShowViewController: UIViewController {
         searchBar.barStyle = .blackTranslucent
         setupLongPressGesture()
         setUpTapGesture()
-
+        
     }
     @objc func handleTap(){
         self.searchBar.resignFirstResponder()
@@ -69,25 +69,25 @@ class SearchShowViewController: UIViewController {
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(sender:)))
         self.view.addGestureRecognizer(longPressRecognizer)
     }
-
+    
     @objc func longPressed(sender: UILongPressGestureRecognizer) {
-
+        
         if sender.state == UIGestureRecognizer.State.began {
-
+            
             let touchPoint = sender.location(in: self.tableView)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 JustWatchAPI.sharedInstance.searchForShow(showName: shows[indexPath.row].name)?.onSuccess({ (entity) in
                     let showJW = entity.content as? ShowJWModel
-
+                    
                     if let showJW = showJW{
-
+                        
                         if let offers = showJW.items.first?.offers{
                             print("offers: ",offers)
-
-                                self.offers = offers
-                                self.performSegue(withIdentifier: "searchToProvider", sender: nil)
-
-
+                            
+                            self.offers = offers
+                            self.performSegue(withIdentifier: "searchToProvider", sender: nil)
+                            
+                            
                         }
                     }
                 }).onFailure({ (error) in
@@ -98,34 +98,41 @@ class SearchShowViewController: UIViewController {
         }
     }
     @objc func handleSwipes(_ sender:UISwipeGestureRecognizer) {
+        guard let limit = self.tabBarController?.viewControllers?.count else {return}
         if sender.direction == .left {
-                    let index = self.tabBarController!.selectedIndex + 1
-
-                    _ = tabBarController(self.tabBarController!, shouldSelect: self.tabBarController!.viewControllers![index])
-        self.tabBarController!.selectedIndex = index
-
-                }
-                if sender.direction == .right {
-                     let index = self.tabBarController!.selectedIndex - 1
-
-                    _ = tabBarController(self.tabBarController!, shouldSelect: self.tabBarController!.viewControllers![index])
-                    self.tabBarController!.selectedIndex = index
-                }
+            let index = self.tabBarController!.selectedIndex + 1
+            
+            if !(index >= limit) {
+                
+                _ = tabBarController(self.tabBarController!, shouldSelect: self.tabBarController!.viewControllers![index])
+                self.tabBarController!.selectedIndex = index
+                print("search", index)
+                
+            }
+        }
+        if sender.direction == .right {
+            let index = self.tabBarController!.selectedIndex - 1
+            if !(index < 0){
+                _ = tabBarController(self.tabBarController!, shouldSelect: self.tabBarController!.viewControllers![index])
+                self.tabBarController!.selectedIndex = index
+                print("search", index)
+            }
+        }
     }
     
-
-
+    
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "searchToProvider"{
             let vc = segue.destination as! ProviderViewController
-
+            
             vc.offers = offers
-
+            
         }else{
             let vc = segue.destination as! ShowViewController
             guard let indexPath = tableView.indexPathForSelectedRow else {return}
@@ -133,18 +140,18 @@ class SearchShowViewController: UIViewController {
             vc.id = String(show.id)
         }
     }
-
-
+    
+    
 }
 extension SearchShowViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return shows.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchShowCell", for: indexPath) as! TvShowSearchTableViewCell
         let show = shows[indexPath.row]
-
+        
         cell.tvShowSearchNameLabel.text = show.name
         cell.tvShowSearchNameLabel.backgroundColor =  UIColor(white: 0, alpha: 0.5)
         if let posterPath = show.posterPath, let airdate = show.firstAirDate, let backdropPath = show.backdropPath {
@@ -158,18 +165,18 @@ extension SearchShowViewController: UITableViewDelegate, UITableViewDataSource {
             cell.backgroundView = backgroundImage
         }else{
             cell.searchPosterImageView.image = imageFromText(text: show.name)
-             let backgroundImage = UIImageView(frame: cell.bounds)
+            let backgroundImage = UIImageView(frame: cell.bounds)
             backgroundImage.image = imageFromText(text: show.name)
-             cell.backgroundView = backgroundImage
+            cell.backgroundView = backgroundImage
         }
-
+        
         cell.ratingSearchLabel.text = String(show.voteAverage)
         cell.ratingSearchLabel.backgroundColor =  UIColor(white: 0, alpha: 0.5)
         cell.tvShowSearchFirstAirdateLabel.backgroundColor =  UIColor(white: 0, alpha: 0.5)
         cell.searchSummaryTextView.text = show.overview
         cell.searchSummaryTextView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         cell.selectionStyle = .none
-
+        
         return cell
     }
     func imageFromText(text:String)->UIImage?{
@@ -178,23 +185,23 @@ extension SearchShowViewController: UITableViewDelegate, UITableViewDataSource {
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22)
         ]
         let textSize = text.size(withAttributes: attributes)
-
+        
         UIGraphicsBeginImageContextWithOptions(textSize, true, 0)
         text.draw(at: CGPoint.zero, withAttributes: attributes)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image
     }
-
-
+    
+    
 }
 
 extension SearchShowViewController: ResourceObserver {
     func resourceChanged(_ resource: Siesta.Resource, event: ResourceEvent) {
         shows = resource.typedContent() ?? []
     }
-
-
+    
+    
 }
 
 extension SearchShowViewController: UISearchBarDelegate {
@@ -206,21 +213,21 @@ extension SearchShowViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
     }
-
+    
 }
 
 extension SearchShowViewController: UITabBarControllerDelegate {
     public func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-
-           let fromView: UIView = tabBarController.selectedViewController!.view
-           let toView  : UIView = viewController.view
-           if fromView == toView {
-                 return false
-           }
-
+        
+        let fromView: UIView = tabBarController.selectedViewController!.view
+        let toView  : UIView = viewController.view
+        if fromView == toView {
+            return false
+        }
+        
         UIView.transition(from: fromView, to: toView, duration: 0.3, options: UIView.AnimationOptions.transitionCrossDissolve) { (finished:Bool) in
-
+            
         }
         return true
-   }
+    }
 }

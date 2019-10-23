@@ -8,7 +8,7 @@
 
 import Foundation
 let imageBaseURLChooseSize = "https://image.tmdb.org/t/p/"
- let imageBaseUrl = "https://image.tmdb.org/t/p/w500"
+let imageBaseUrl = "https://image.tmdb.org/t/p/w500"
 
 func getYearFromDateString(dateString:String) -> String{
     let dateFormatterGet = DateFormatter()
@@ -16,16 +16,16 @@ func getYearFromDateString(dateString:String) -> String{
     let dateFormatterPrint = DateFormatter()
     dateFormatterPrint.dateFormat = "yyyy"
     if let date = dateFormatterGet.date(from: dateString){
-    return dateFormatterPrint.string(from: date)
-}
+        return dateFormatterPrint.string(from: date)
+    }
     return "N/A"
 }
 extension String {
     func capitalizingFirstLetter() -> String {
-      return prefix(1).uppercased() + self.lowercased().dropFirst()
+        return prefix(1).uppercased() + self.lowercased().dropFirst()
     }
-
+    
     mutating func capitalizeFirstLetter() {
-      self = self.capitalizingFirstLetter()
+        self = self.capitalizingFirstLetter()
     }
 }

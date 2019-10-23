@@ -17,13 +17,13 @@ class TrendingShowsModel: Codable {
     let page: Int
     let results: [TvShowResult]
     let totalPages, totalResults: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case page, results
         case totalPages = "total_pages"
         case totalResults = "total_results"
     }
-
+    
     init(page: Int, results: [TvShowResult], totalPages: Int, totalResults: Int) {
         self.page = page
         self.results = results
@@ -46,7 +46,7 @@ class TvShowResult: Codable {
     let originCountry: [OriginCountry]
     let popularity: Double
     let mediaType: MediaType
-
+    
     enum CodingKeys: String, CodingKey {
         case originalName = "original_name"
         case id, name
@@ -62,7 +62,7 @@ class TvShowResult: Codable {
         case popularity
         case mediaType = "media_type"
     }
-
+    
     init(originalName: String, id: Int, name: String, voteCount: Int, voteAverage: Double, firstAirDate: String, posterPath: String, genreIDS: [Int], originalLanguage: OriginalLanguage, backdropPath: String, overview: String, originCountry: [OriginCountry], popularity: Double, mediaType: MediaType) {
         self.originalName = originalName
         self.id = id

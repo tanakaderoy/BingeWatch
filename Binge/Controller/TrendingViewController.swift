@@ -43,7 +43,7 @@ class TrendingViewController: UIViewController, UIGestureRecognizerDelegate {
         tabBarController?.delegate = self
         self.view.addGestureRecognizer(leftSwipe)
         self.view.addGestureRecognizer(rightSwipe)
-setupLongPressGesture()
+        setupLongPressGesture()
     }
 
     func setupLongPressGesture() {
@@ -65,9 +65,21 @@ setupLongPressGesture()
                         if let offers = showJW.items.first?.offers{
                             print("offers: ",offers)
                             if let top = offers.first{
-            
+
                                 self.offers = offers
-                                self.performSegue(withIdentifier: "homeToProvider", sender: nil)
+                               if #available(iOS 13.0, *) {
+                                    if let vc = self.storyboard?.instantiateViewController(identifier: "provider") as? ProviderViewController{
+                                        vc.offers = offers
+                                        self.present(vc, animated: true, completion: nil)
+                                    }
+                                } else {
+                                    // Fallback on earlier versions
+                                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "provider") as! ProviderViewController
+                                    vc.offers = offers
+                                let show = self.shows[indexPath.row]
+                                    vc.title = show.name
+                                    self.navigationController?.pushViewController(vc, animated: true)
+                                }
 
                             }
                         }
@@ -85,18 +97,25 @@ setupLongPressGesture()
 
 
     @objc func handleSwipes(_ sender:UISwipeGestureRecognizer) {
+        guard let limit = self.tabBarController?.viewControllers?.count else {return}
+
         if sender.direction == .left {
             let index = self.tabBarController!.selectedIndex + 1
-
+ if !(index > limit) {
             _ = tabBarController(self.tabBarController!, shouldSelect: self.tabBarController!.viewControllers![index])
 self.tabBarController!.selectedIndex = index
+            print(index)
+        }
 
         }
         if sender.direction == .right {
              let index = self.tabBarController!.selectedIndex - 1
-
+ if !(index < 0){
             _ = tabBarController(self.tabBarController!, shouldSelect: self.tabBarController!.viewControllers![index])
+
             self.tabBarController!.selectedIndex = index
+            print(index)
+        }
         }
     }
     

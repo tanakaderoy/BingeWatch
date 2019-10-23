@@ -16,14 +16,14 @@ import Foundation
 class ShowSearchModel: Codable {
     let page, totalResults, totalPages: Int
     let results: [ShowSearchResult]?
-
+    
     enum CodingKeys: String, CodingKey {
         case page
         case totalResults = "total_results"
         case totalPages = "total_pages"
         case results
     }
-
+    
     init(page: Int, totalResults: Int, totalPages: Int, results: [ShowSearchResult]) {
         self.page = page
         self.totalResults = totalResults
@@ -45,7 +45,7 @@ class ShowSearchResult: Codable {
     let id: Int
     let voteAverage: Double
     let overview: String
-
+    
     enum CodingKeys: String, CodingKey {
         case originalName = "original_name"
         case genreIDS = "genre_ids"
@@ -60,7 +60,7 @@ class ShowSearchResult: Codable {
         case overview
         case posterPath = "poster_path"
     }
-
+    
     init(originalName: String, genreIDS: [Int], name: String, popularity: Double, originCountry: [String], voteCount: Int, firstAirDate: String, backdropPath: String, originalLanguage: String, id: Int, voteAverage: Double, overview: String, posterPath: String) {
         self.originalName = originalName
         self.genreIDS = genreIDS

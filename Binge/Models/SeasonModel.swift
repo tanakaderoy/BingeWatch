@@ -19,7 +19,7 @@ class SeasonModel: Codable {
     let seasonModelID: Int?
     let posterPath: String?
     let seasonNumber: Int?
-
+    
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case airDate = "air_date"
@@ -28,7 +28,7 @@ class SeasonModel: Codable {
         case posterPath = "poster_path"
         case seasonNumber = "season_number"
     }
-
+    
     init(id: String?, airDate: String?, episodes: [Episode], name: String?, overview: String?, seasonModelID: Int?, posterPath: String?, seasonNumber: Int?) {
         self.id = id
         self.airDate = airDate
@@ -52,7 +52,7 @@ class Episode: Codable {
     let voteCount: Int?
     let crew: [Crew]?
     let guestStars: [GuestStar]?
-
+    
     enum CodingKeys: String, CodingKey {
         case airDate = "air_date"
         case episodeNumber = "episode_number"
@@ -66,7 +66,7 @@ class Episode: Codable {
         case crew
         case guestStars = "guest_stars"
     }
-
+    
     init(airDate: String?, episodeNumber: Int?, id: Int?, name: String?, overview: String?, productionCode: String?, seasonNumber: Int?, showID: Int?, stillPath: String?, voteAverage: Double?, voteCount: Int?, crew: [Crew]?, guestStars: [GuestStar]?) {
         self.airDate = airDate
         self.episodeNumber = episodeNumber
@@ -89,21 +89,21 @@ class Crew: Codable {
     let id: Int?
     let creditID, name, department, job: String?
     //let profilePath: JSONNull?
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case creditID = "credit_id"
         case name, department, job
-       // case profilePath = "profile_path"
+        // case profilePath = "profile_path"
     }
-
+    
     init(id: Int?, creditID: String?, name: String?, department: String?, job: String?) {
         self.id = id
         self.creditID = creditID
         self.name = name
         self.department = department
         self.job = job
-//        self.profilePath = profilePath
+        //        self.profilePath = profilePath
     }
 }
 
@@ -113,14 +113,14 @@ class GuestStar: Codable {
     let name, creditID, character: String?
     let order, gender: Int?
     let profilePath: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case id, name
         case creditID = "credit_id"
         case character, order, gender
         case profilePath = "profile_path"
     }
-
+    
     init(id: Int?, name: String?, creditID: String?, character: String?, order: Int?, gender: Int?, profilePath: String?) {
         self.id = id
         self.name = name

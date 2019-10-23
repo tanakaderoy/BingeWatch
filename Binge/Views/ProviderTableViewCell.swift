@@ -17,13 +17,13 @@ class ProviderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
     @IBAction func openLickTapped(_ sender: UIButton) {
         print("provider", providerURL)
         if  UIApplication.shared.canOpenURL(URL(string: providerURL)!){

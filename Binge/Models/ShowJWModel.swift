@@ -16,12 +16,12 @@ import Foundation
 class ShowJWModel: Codable {
     let totalResults: Int
     let items: [Item]
-
+    
     enum CodingKeys: String, CodingKey {
         case totalResults = "total_results"
         case items
     }
-
+    
     init(totalResults: Int, items: [Item]) {
         self.totalResults = totalResults
         self.items = items
@@ -43,7 +43,7 @@ class Item: Codable {
     let originalLanguage: String?
     let ageCertification, shortDescription: String?
     let maxSeasonNumber: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case jwEntityID = "jw_entity_id"
         case id, title
@@ -60,7 +60,7 @@ class Item: Codable {
         case ageCertification = "age_certification"
         case maxSeasonNumber = "max_season_number"
     }
-
+    
     init(jwEntityID: String, id: Int, title: String, fullPath: String, fullPaths: FullPaths, poster: String?, shortDescription: String?, originalReleaseYear: Int?, tmdbPopularity: Double?, objectType: String, originalTitle: String, offers: [Offer]?, scoring: [Scoring]?, originalLanguage: String?, ageCertification: String?, maxSeasonNumber: Int) {
         self.jwEntityID = jwEntityID
         self.id = id
@@ -84,11 +84,11 @@ class Item: Codable {
 // MARK: - FullPaths
 class FullPaths: Codable {
     let showDetailOverview: String
-
+    
     enum CodingKeys: String, CodingKey {
         case showDetailOverview = "SHOW_DETAIL_OVERVIEW"
     }
-
+    
     init(showDetailOverview: String) {
         self.showDetailOverview = showDetailOverview
     }
@@ -103,7 +103,7 @@ class Offer: Codable {
     let presentationType: String
     let elementCount, newElementCount: Int
     let dateCreatedProviderID, dateCreated, country: String
-
+    
     enum CodingKeys: String, CodingKey {
         case type
         case monetizationType = "monetization_type"
@@ -116,7 +116,7 @@ class Offer: Codable {
         case dateCreated = "date_created"
         case country
     }
-
+    
     init(type: String, monetizationType: String, providerID: Int, currency: String?, urls: Urls, presentationType: String, elementCount: Int, newElementCount: Int, dateCreatedProviderID: String, dateCreated: String, country: String) {
         self.type = type
         self.monetizationType = monetizationType
@@ -137,14 +137,14 @@ class Urls: Codable {
     let standardWeb: String
     let deeplinkAndroid, deeplinkIos: String?
     let deeplinkAndroidTv: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case standardWeb = "standard_web"
         case deeplinkAndroid = "deeplink_android"
         case deeplinkIos = "deeplink_tvos"
         case deeplinkAndroidTv = "deeplink_android_tv"
     }
-
+    
     init(standardWeb: String, deeplinkAndroid: String?, deeplinkIos: String?, deeplinkAndroidTv: String?) {
         self.standardWeb = standardWeb
         self.deeplinkAndroid = deeplinkAndroid
@@ -157,12 +157,12 @@ class Urls: Codable {
 class Scoring: Codable {
     let providerType: String
     let value: Double
-
+    
     enum CodingKeys: String, CodingKey {
         case providerType = "provider_type"
         case value
     }
-
+    
     init(providerType: String, value: Double) {
         self.providerType = providerType
         self.value = value

@@ -26,7 +26,7 @@ class TvShowModel: Codable {
     let lastAirDate: String?
     let lastEpisodeToAir: LastEpisodeToAir?
     let name: String?
-//    let nextEpisodeToAir: JSONNull?
+    //    let nextEpisodeToAir: JSONNull?
     let networks: [Network]?
     let numberOfEpisodes, numberOfSeasons: Int?
     let originCountry: [String]?
@@ -38,7 +38,7 @@ class TvShowModel: Codable {
     let status, type: String?
     let voteAverage: Double?
     let voteCount: Int?
-
+    
     enum CodingKeys: String, CodingKey {
         case backdropPath = "backdrop_path"
         case createdBy = "created_by"
@@ -50,7 +50,7 @@ class TvShowModel: Codable {
         case lastAirDate = "last_air_date"
         case lastEpisodeToAir = "last_episode_to_air"
         case name
-//        case nextEpisodeToAir = "next_episode_to_air"
+        //        case nextEpisodeToAir = "next_episode_to_air"
         case networks
         case numberOfEpisodes = "number_of_episodes"
         case numberOfSeasons = "number_of_seasons"
@@ -64,7 +64,7 @@ class TvShowModel: Codable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
-
+    
     init(backdropPath: String?, createdBy: [CreatedBy]?, episodeRunTime: [Int]?, firstAirDate: String?, genres: [Genre]?, homepage: String?, id: Int?, inProduction: Bool?, languages: [String]?, lastAirDate: String?, lastEpisodeToAir: LastEpisodeToAir?, name: String?, networks: [Network]?, numberOfEpisodes: Int?, numberOfSeasons: Int?, originCountry: [String]?, originalLanguage: String?, originalName: String?, overview: String?, popularity: Double?, posterPath: String?, productionCompanies: [Network]?, seasons: [Season]?, status: String?, type: String?, voteAverage: Double?, voteCount: Int?) {
         self.backdropPath = backdropPath
         self.createdBy = createdBy
@@ -78,7 +78,7 @@ class TvShowModel: Codable {
         self.lastAirDate = lastAirDate
         self.lastEpisodeToAir = lastEpisodeToAir
         self.name = name
-//        self.nextEpisodeToAir = nextEpisodeToAir
+        //        self.nextEpisodeToAir = nextEpisodeToAir
         self.networks = networks
         self.numberOfEpisodes = numberOfEpisodes
         self.numberOfSeasons = numberOfSeasons
@@ -101,14 +101,14 @@ class TvShowModel: Codable {
 class CreatedBy: Codable {
     let id: Int?
     let creditID, name, profilePath: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case creditID = "credit_id"
         case name
         case profilePath = "profile_path"
     }
-
+    
     init(id: Int?, creditID: String?, name: String?, profilePath: String?) {
         self.id = id
         self.creditID = creditID
@@ -121,7 +121,7 @@ class CreatedBy: Codable {
 class Genre: Codable {
     let id: Int?
     let name: String?
-
+    
     init(id: Int?, name: String?) {
         self.id = id
         self.name = name
@@ -137,7 +137,7 @@ class LastEpisodeToAir: Codable {
     let stillPath: String?
     let voteAverage: Double?
     let voteCount: Int?
-
+    
     enum CodingKeys: String, CodingKey {
         case airDate = "air_date"
         case episodeNumber = "episode_number"
@@ -149,7 +149,7 @@ class LastEpisodeToAir: Codable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
-
+    
     init(airDate: String?, episodeNumber: Int?, id: Int?, name: String?, overview: String?, productionCode: String?, seasonNumber: Int?, showID: Int?, stillPath: String?, voteAverage: Double?, voteCount: Int?) {
         self.airDate = airDate
         self.episodeNumber = episodeNumber
@@ -171,13 +171,13 @@ class Network: Codable {
     let id: Int?
     let logoPath: String?
     let originCountry: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case name, id
         case logoPath = "logo_path"
         case originCountry = "origin_country"
     }
-
+    
     init(name: String?, id: Int?, logoPath: String?, originCountry: String?) {
         self.name = name
         self.id = id
@@ -192,7 +192,7 @@ class Season: Codable {
     let episodeCount, id: Int?
     let name, overview, posterPath: String?
     let seasonNumber: Int?
-
+    
     enum CodingKeys: String, CodingKey {
         case airDate = "air_date"
         case episodeCount = "episode_count"
@@ -200,7 +200,7 @@ class Season: Codable {
         case posterPath = "poster_path"
         case seasonNumber = "season_number"
     }
-
+    
     init(airDate: String?, episodeCount: Int?, id: Int?, name: String?, overview: String?, posterPath: String?, seasonNumber: Int?) {
         self.airDate = airDate
         self.episodeCount = episodeCount
@@ -215,28 +215,28 @@ class Season: Codable {
 // MARK: - Encode/decode helpers
 
 class JSONNull: Codable, Hashable {
-
+    
     public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
         return true
     }
-
+    
     public var hashValue: Int {
         return 0
     }
-
+    
     public func hash(into hasher: inout Hasher) {
         // No-op
     }
-
+    
     public init() {}
-
+    
     public required init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if !container.decodeNil() {
             throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
         }
     }
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encodeNil()

@@ -85,11 +85,11 @@ class ShowViewController: UIViewController {
 
     @IBAction func bingeButtonPressed(_ sender: UIButton) {
         if let season = seasons.randomElement(), let seasonNumber = season.seasonNumber, let episodeCount = season.episodeCount{
-            randomEpisode = String(arc4random_uniform(UInt32(episodeCount)))
+            randomEpisode = String(arc4random_uniform(UInt32(episodeCount)) + 1)
             sentSeasonNo = String(seasonNumber)
 
 
-             print("peform binge")
+            
             if #available(iOS 13.0, *) {
                 let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "seasonInfo") as! SeasonInfoViewController
                 vc.id = String(self.id!)
@@ -99,6 +99,12 @@ class ShowViewController: UIViewController {
                 navigationController?.pushViewController(vc, animated: true)
             } else {
                 // Fallback on earlier versions
+                let vc = storyboard?.instantiateViewController(withIdentifier: "seasonInfo") as! SeasonInfoViewController
+                vc.id = String(self.id!)
+                vc.showName = showName
+                vc.seasonNumber = sentSeasonNo
+                vc.episode = randomEpisode
+                navigationController?.pushViewController(vc, animated: true)
             }
 
 

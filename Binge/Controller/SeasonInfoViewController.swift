@@ -33,10 +33,10 @@ class SeasonInfoViewController: UIViewController {
                 navigationItem.title = "Season \(season.seasonNumber ?? 0)"
                 if let episode = episode{
                     print("Episode: ", episodes[Int(episode)!].name)
-                        let indexPath = IndexPath(row: Int(episode) ?? 0, section: 0)
-                        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                    let indexPath = IndexPath(row: Int(episode) ?? 0, section: 0)
+                    tableView.scrollToRow(at: indexPath, at: .top, animated: true)
                 }
-
+                
                 //self.seasonNumber = String(season.seasonNumber!)
             }
         }
@@ -47,10 +47,10 @@ class SeasonInfoViewController: UIViewController {
             tableView.reloadData()
         }
     }
-
-
+    
+    
     private var statusOverlay = ResourceStatusOverlay()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let id = id, let seasonNumber = seasonNumber{
@@ -64,38 +64,38 @@ class SeasonInfoViewController: UIViewController {
                 })
         }
         statusOverlay.embed(in: self)
-
+        
         // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         statusOverlay.positionToCoverParent()
     }
-
+    
     /*
      // MARK: - Navigation
-
+     
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destination.
      // Pass the selected object to the new view controller.
      }
      */
-
+    
 }
 
 extension SeasonInfoViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return episodes.count
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let showName = showName{
             JustWatchAPI.sharedInstance.searchForShow(showName: showName)?.onSuccess({ (entity) in
                 let showJW = entity.content as? ShowJWModel
-
+                
                 if let showJW = showJW{
-
+                    
                     if let offers = showJW.items.first?.offers{
                         print("offers: ",offers)
                         if #available(iOS 13.0, *) {
@@ -105,11 +105,16 @@ extension SeasonInfoViewController: UITableViewDelegate, UITableViewDataSource{
                             }
                         } else {
                             // Fallback on earlier versions
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "provider") as! ProviderViewController
+                            vc.offers = offers
+                            var episode = self.episodes[indexPath.row]
+                            vc.title = episode.name
+                            self.navigationController?.pushViewController(vc, animated: true)
                         }
-
-
-
-
+                        
+                        
+                        
+                        
                     }
                 }
             }).onFailure({ (error) in
@@ -119,7 +124,7 @@ extension SeasonInfoViewController: UITableViewDelegate, UITableViewDataSource{
         }
     }
     
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "episodeCell", for: indexPath) as! EpisodeTableViewCell
         let episode = episodes[indexPath.row]
@@ -137,21 +142,21 @@ extension SeasonInfoViewController: UITableViewDelegate, UITableViewDataSource{
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22)
         ]
         let textSize = text.size(withAttributes: attributes)
-
+        
         UIGraphicsBeginImageContextWithOptions(textSize, true, 0)
         text.draw(at: CGPoint.zero, withAttributes: attributes)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image
     }
-
-
+    
+    
 }
 
 extension SeasonInfoViewController: ResourceObserver{
     func resourceChanged(_ resource: Siesta.Resource, event: ResourceEvent) {
         seasonInfo = resource.typedContent()
     }
-
-
+    
+    
 }
