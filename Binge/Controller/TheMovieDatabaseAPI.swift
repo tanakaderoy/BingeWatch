@@ -60,9 +60,10 @@ class TMDBAPI {
     }
     
 
-    func getTrendingShows() -> Resource {
+    func getTrendingShows(page: String) -> Resource {
         return service
             .resource("/trending/tv/week")
+            .withParam("page", page)
             .withParam("api_key", apiKey)
     }
     func searchWithQuery(searchQuery query: String) -> Resource {
@@ -83,11 +84,22 @@ class JustWatchAPI {
             $0.headers["Content-Type"] = "application/json"
         }
         let jsonDecoder = JSONDecoder()
+
+        service.configureTransformer("content/providers/locale/en_US"){
+            try jsonDecoder.decode(JWProviders.self, from: $0.content)
+        }
+
         service.configureTransformer("content/titles/en_US/popular"){
             try jsonDecoder.decode(ShowJWModel.self, from: $0.content)
         }
 
 
+
+    }
+
+    
+    func getProviders() -> Resource{
+        return service.resource("content/providers/locale/en_US")
     }
 
     func searchForShow(showName name:String) -> Request? {

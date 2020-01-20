@@ -10,6 +10,11 @@ target 'Binge' do
   pod 'Siesta/UI', '~> 1.0'
   pod 'Kingfisher'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseUI'
+
 
   # Pods for Binge
 

@@ -10,7 +10,8 @@ import UIKit
 import Siesta
 
 class ProviderViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
-    
+    private var statusOverlay = ResourceStatusOverlay()
+
     
     @IBOutlet weak var tableView: UITableView!
     var offers = [Offer]() {
@@ -18,11 +19,30 @@ class ProviderViewController: UIViewController , UITableViewDelegate, UITableVie
             print(offers.count)
         }
     }
-    
+    var providers = JWProviders(){
+        didSet{
+            for provider in providers{
+                for offer in offers{
+                    if provider.id == offer.providerID{
+                        offer.providerName = provider.clearName
+                        tableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
+        JustWatchAPI.sharedInstance.getProviders()
+                       .addObserver(self)
+                       .addObserver(statusOverlay, owner: self)
+                       .load().onSuccess({ (entity) in
+                           print(entity.content)
+                       }).onFailure({ (error) in
+                           print(error)
+                       })
         // Do any additional setup after loading the view.
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,11 +68,16 @@ class ProviderViewController: UIViewController , UITableViewDelegate, UITableVie
             cell.standardWeb = provider.urls.standardWeb
         }else{
             cell.providerURL = provider.urls.standardWeb
+
             
             var url = URL(string: provider.urls.standardWeb)
             var domain = url!.host!
             domain = domain.regex(pattern: pattern).first ?? ""
+            if provider.providerName == nil{
             cell.providerNameLabel.text = "Provider: \(domain.capitalizingFirstLetter())"
+            }else{
+                cell.providerNameLabel.text = "Provider: \(provider.providerName!)"
+            }
         }
         
         return cell
@@ -94,4 +119,12 @@ extension String {
             return [String]()
         }
     }
+}
+
+extension ProviderViewController: ResourceObserver{
+    func resourceChanged(_ resource: Resource, event: ResourceEvent) {
+        providers = resource.typedContent() ?? []
+    }
+
+    
 }

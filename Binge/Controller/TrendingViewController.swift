@@ -9,10 +9,20 @@
 import UIKit
 import Siesta
 import Kingfisher
+import FirebaseUI
+
 
 class TrendingViewController: UIViewController, UIGestureRecognizerDelegate {
-    
+    @IBOutlet weak var signInOutButton: UIBarButtonItem!
+
     @IBOutlet weak var tableView: UITableView!
+   //For Pagination
+   var isDataLoading:Bool=false
+   var pageNo:Int=1
+   var limit:Int=20
+   var offset:Int=0 //pageNo*limit
+   var didEndReached:Bool=false
+
     private var shows: [TvShowResult] = [] {
         didSet {
             tableView.reloadData()
@@ -26,26 +36,36 @@ class TrendingViewController: UIViewController, UIGestureRecognizerDelegate {
             tvShowListResource?
                 .addObserver(self)
                 .addObserver(statusOverlay, owner: self)
-                .loadIfNeeded()
+                .loadIfNeeded()?.onFailure({ (error) in
+                    print(error.cause)
+                })
         }
     }
     private var statusOverlay = ResourceStatusOverlay()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        statusOverlay.embed(in: self)
-        tvShowListResource = TMDBAPI.sharedInstance.getTrendingShows()
+    fileprivate func setUpSwipeGestures() {
         // Do any additional setup after loading the view.
-        
+
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         leftSwipe.direction = .left
         rightSwipe.direction = .right
-        tabBarController?.delegate = self
         self.view.addGestureRecognizer(leftSwipe)
         self.view.addGestureRecognizer(rightSwipe)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if Auth.auth().currentUser == nil{
+            signInOutButton.title = "Sign In"
+        }
+        statusOverlay.embed(in: self).positionToCover(view)
+        tvShowListResource = TMDBAPI.sharedInstance.getTrendingShows(page: String(pageNo))
+        tabBarController?.delegate = self
+
+        setUpSwipeGestures()
         setupLongPressGesture()
     }
-    
+
     func setupLongPressGesture() {
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(sender:)))
         self.view.addGestureRecognizer(longPressRecognizer)
@@ -68,7 +88,7 @@ class TrendingViewController: UIViewController, UIGestureRecognizerDelegate {
                                 
                                 self.offers = offers
                                 if #available(iOS 13.0, *) {
-                                    if let vc = self.storyboard?.instantiateViewController(identifier: "provider") as? ProviderViewController{
+                                    if let vc = self.storyboard?.instantiateViewController(withIdentifier: "provider") as? ProviderViewController{
                                         vc.offers = offers
                                         self.present(vc, animated: true, completion: nil)
                                     }
@@ -87,13 +107,24 @@ class TrendingViewController: UIViewController, UIGestureRecognizerDelegate {
                 }).onFailure({ (error) in
                     print(error)
                 })
-                // your code here, get the row for the indexPath or do whatever you want
             }
             
         }
     }
     
     
+    @IBAction func signInOrOutButtonTouched(_ sender: Any) {
+        let loginVC = LoginViewController()
+                   loginVC.modalPresentationStyle = .fullScreen
+        if(Auth.auth().currentUser != nil){
+         try! Auth.auth().signOut()
+
+            self.present(loginVC, animated: true, completion: nil)
+        }else{
+            self.present(loginVC, animated: true, completion: nil)
+
+        }
+    }
     
     
     @objc func handleSwipes(_ sender:UISwipeGestureRecognizer) {
@@ -176,7 +207,9 @@ extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension TrendingViewController: ResourceObserver {
     func resourceChanged(_ resource: Siesta.Resource, event: ResourceEvent) {
-        shows = resource.typedContent() ?? []
+        let newShows:[TvShowResult] = resource.typedContent() ?? []
+
+        shows.append(contentsOf:newShows)
     }
 }
 
@@ -193,5 +226,37 @@ extension TrendingViewController: UITabBarControllerDelegate {
             
         }
         return true
+    }
+}
+
+extension TrendingViewController: UIScrollViewDelegate{
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+
+        print("scrollViewWillBeginDragging")
+        isDataLoading = false
+    }
+
+
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("scrollViewDidEndDecelerating")
+    }
+    //Pagination
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+
+            print("scrollViewDidEndDragging")
+            if ((tableView.contentOffset.y + tableView.frame.size.height) >= tableView.contentSize.height)
+            {
+                if !isDataLoading{
+                    isDataLoading = true
+                    self.pageNo=self.pageNo+1
+                    self.limit=self.limit+10
+                    self.offset=self.limit * self.pageNo
+                    tvShowListResource = TMDBAPI.sharedInstance.getTrendingShows(page: String(self.pageNo))
+
+                }
+            }
+
+
     }
 }

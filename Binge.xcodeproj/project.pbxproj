@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		760FE4BF91DC378D93575EE3 /* Pods_Binge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D51647D15EDE6AB478AA69 /* Pods_Binge.framework */; };
+		7A79B8523F211D042F510BE1 /* Pods_Binge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AD5C46085DFAB555F130BE /* Pods_Binge.framework */; };
+		BA4118FA2366499300C95145 /* JWProvidersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4118F92366499300C95145 /* JWProvidersModel.swift */; };
+		BA70D4942371E90700A17B12 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA70D4932371E90700A17B12 /* LoginViewController.swift */; };
+		BA70D4962371F9BF00A17B12 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA70D4952371F9BF00A17B12 /* GoogleService-Info.plist */; };
 		BAC61661235A4A47006F6752 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC61660235A4A47006F6752 /* Util.swift */; };
 		BAE7D9572347B2760031683D /* ProviderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7D9562347B2760031683D /* ProviderTableViewCell.swift */; };
 		BAE7D9592347B2980031683D /* ProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE7D9582347B2980031683D /* ProviderViewController.swift */; };
@@ -32,8 +35,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		77D51647D15EDE6AB478AA69 /* Pods_Binge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Binge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA2E0763085CBA5783188D1F /* Pods-Binge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Binge.release.xcconfig"; path = "Pods/Target Support Files/Pods-Binge/Pods-Binge.release.xcconfig"; sourceTree = "<group>"; };
+		A18F763CCF8C9C6BDDEF3F04 /* Pods-Binge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Binge.release.xcconfig"; path = "Target Support Files/Pods-Binge/Pods-Binge.release.xcconfig"; sourceTree = "<group>"; };
+		AD88F3BF9650C644B5902767 /* Pods-Binge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Binge.debug.xcconfig"; path = "Target Support Files/Pods-Binge/Pods-Binge.debug.xcconfig"; sourceTree = "<group>"; };
+		BA4118F92366499300C95145 /* JWProvidersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWProvidersModel.swift; sourceTree = "<group>"; };
+		BA70D4932371E90700A17B12 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BA70D4952371F9BF00A17B12 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BAC61660235A4A47006F6752 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		BAE7D9562347B2760031683D /* ProviderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderTableViewCell.swift; sourceTree = "<group>"; };
 		BAE7D9582347B2980031683D /* ProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderViewController.swift; sourceTree = "<group>"; };
@@ -57,7 +63,7 @@
 		BAE9357523469AC7008FC1CE /* SeasonInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonInfoViewController.swift; sourceTree = "<group>"; };
 		BAE935772346A1D3008FC1CE /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
 		BAE9357C234719CC008FC1CE /* ShowJWModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowJWModel.swift; sourceTree = "<group>"; };
-		D4F3EE0BE2798D851CDCFB8C /* Pods-Binge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Binge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Binge/Pods-Binge.debug.xcconfig"; sourceTree = "<group>"; };
+		E7AD5C46085DFAB555F130BE /* Pods_Binge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Binge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,20 +71,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				760FE4BF91DC378D93575EE3 /* Pods_Binge.framework in Frameworks */,
+				7A79B8523F211D042F510BE1 /* Pods_Binge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54D6D0472F26A8DCB43A2E27 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD88F3BF9650C644B5902767 /* Pods-Binge.debug.xcconfig */,
+				A18F763CCF8C9C6BDDEF3F04 /* Pods-Binge.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		BAE9353C2343F60E008FC1CE = {
 			isa = PBXGroup;
 			children = (
 				BAE935472343F60E008FC1CE /* Binge */,
 				BAE935462343F60E008FC1CE /* Products */,
-				F1E7FBF52920E3FADF3AABF2 /* Pods */,
-				C488C4E3CE98F440CEE8EE10 /* Frameworks */,
+				54D6D0472F26A8DCB43A2E27 /* Pods */,
+				E53CC3330FCB5837BF6E66BD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +111,7 @@
 				BAE9355E2343FE1D008FC1CE /* Controller */,
 				BAE9355D2343FE14008FC1CE /* Views */,
 				BAE9355C2343FE06008FC1CE /* Models */,
+				BA70D4952371F9BF00A17B12 /* GoogleService-Info.plist */,
 				BAE935482343F60E008FC1CE /* AppDelegate.swift */,
 				BAE7D97A2347E7D00031683D /* SceneDelegate.swift */,
 				BAE9354E2343F60E008FC1CE /* Main.storyboard */,
@@ -114,6 +130,7 @@
 				BAE9357123465ECF008FC1CE /* TvShowModel.swift */,
 				BAE9357323469584008FC1CE /* SeasonModel.swift */,
 				BAE9357C234719CC008FC1CE /* ShowJWModel.swift */,
+				BA4118F92366499300C95145 /* JWProvidersModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -139,25 +156,17 @@
 				BAE9356F23465998008FC1CE /* ShowViewController.swift */,
 				BAE9357523469AC7008FC1CE /* SeasonInfoViewController.swift */,
 				BAE7D9582347B2980031683D /* ProviderViewController.swift */,
+				BA70D4932371E90700A17B12 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		C488C4E3CE98F440CEE8EE10 /* Frameworks */ = {
+		E53CC3330FCB5837BF6E66BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				77D51647D15EDE6AB478AA69 /* Pods_Binge.framework */,
+				E7AD5C46085DFAB555F130BE /* Pods_Binge.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F1E7FBF52920E3FADF3AABF2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D4F3EE0BE2798D851CDCFB8C /* Pods-Binge.debug.xcconfig */,
-				AA2E0763085CBA5783188D1F /* Pods-Binge.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,11 +176,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BAE935592343F611008FC1CE /* Build configuration list for PBXNativeTarget "Binge" */;
 			buildPhases = (
-				FD66329E7DC6A5DD4DE2645D /* [CP] Check Pods Manifest.lock */,
+				F4BB52FF386E6300FD2B6B65 /* [CP] Check Pods Manifest.lock */,
 				BAE935412343F60E008FC1CE /* Sources */,
 				BAE935422343F60E008FC1CE /* Frameworks */,
 				BAE935432343F60E008FC1CE /* Resources */,
-				217E3FC3967414ADF07731A4 /* [CP] Embed Pods Frameworks */,
+				286A598FC6AE35F4EF0BFB04 /* [CP] Embed Pods Frameworks */,
+				4BF1F8A4D17DEC5454A78F7A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -223,13 +233,14 @@
 				BAE935552343F611008FC1CE /* LaunchScreen.storyboard in Resources */,
 				BAE935522343F611008FC1CE /* Assets.xcassets in Resources */,
 				BAE935502343F60E008FC1CE /* Main.storyboard in Resources */,
+				BA70D4962371F9BF00A17B12 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		217E3FC3967414ADF07731A4 /* [CP] Embed Pods Frameworks */ = {
+		286A598FC6AE35F4EF0BFB04 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -246,16 +257,37 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Binge/Pods-Binge-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FD66329E7DC6A5DD4DE2645D /* [CP] Check Pods Manifest.lock */ = {
+		4BF1F8A4D17DEC5454A78F7A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Binge/Pods-Binge-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Binge/Pods-Binge-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Binge/Pods-Binge-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4BB52FF386E6300FD2B6B65 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Binge-checkManifestLockResult.txt",
 			);
@@ -279,11 +311,13 @@
 				BAE7D9572347B2760031683D /* ProviderTableViewCell.swift in Sources */,
 				BAE9357423469584008FC1CE /* SeasonModel.swift in Sources */,
 				BAE935682344049F008FC1CE /* TrendingShowsModel.swift in Sources */,
+				BA70D4942371E90700A17B12 /* LoginViewController.swift in Sources */,
 				BAE7D97B2347E7D00031683D /* SceneDelegate.swift in Sources */,
 				BAE9356623440322008FC1CE /* TheMovieDatabaseAPI.swift in Sources */,
 				BAE9356A234540A5008FC1CE /* SearchShowViewController.swift in Sources */,
 				BAE9357023465998008FC1CE /* ShowViewController.swift in Sources */,
 				BAE9357223465ECF008FC1CE /* TvShowModel.swift in Sources */,
+				BA4118FA2366499300C95145 /* JWProvidersModel.swift in Sources */,
 				BAE9357D234719CC008FC1CE /* ShowJWModel.swift in Sources */,
 				BAE9356E23465682008FC1CE /* SeasonCollectionViewCell.swift in Sources */,
 				BAE935642343FEF4008FC1CE /* TrendingViewController.swift in Sources */,
@@ -430,14 +464,14 @@
 		};
 		BAE9355A2343F611008FC1CE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4F3EE0BE2798D851CDCFB8C /* Pods-Binge.debug.xcconfig */;
+			baseConfigurationReference = AD88F3BF9650C644B5902767 /* Pods-Binge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J3NVQ5AFC2;
 				INFOPLIST_FILE = Binge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -453,14 +487,14 @@
 		};
 		BAE9355B2343F611008FC1CE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA2E0763085CBA5783188D1F /* Pods-Binge.release.xcconfig */;
+			baseConfigurationReference = A18F763CCF8C9C6BDDEF3F04 /* Pods-Binge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J3NVQ5AFC2;
 				INFOPLIST_FILE = Binge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

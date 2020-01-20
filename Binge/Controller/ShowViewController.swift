@@ -91,7 +91,7 @@ class ShowViewController: UIViewController {
 
             
             if #available(iOS 13.0, *) {
-                let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "seasonInfo") as! SeasonInfoViewController
+                let vc =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "seasonInfo") as! SeasonInfoViewController
                 vc.id = String(self.id!)
                 vc.showName = showName
                             vc.seasonNumber = sentSeasonNo

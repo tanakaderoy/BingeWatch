@@ -45,7 +45,7 @@ class SearchShowViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         statusOverlay.embed(in: self)
-        tvShowListResource = TMDBAPI.sharedInstance.getTrendingShows()
+//        tvShowListResource = TMDBAPI.sharedInstance.getTrendingShows()
         searchBar.delegate = self
         // Do any additional setup after loading the view.
         tableView.keyboardDismissMode = .onDrag

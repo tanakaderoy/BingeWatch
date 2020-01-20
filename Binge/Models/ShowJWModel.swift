@@ -37,12 +37,12 @@ class Item: Codable {
     let poster: String?
     let originalReleaseYear: Int?
     let tmdbPopularity: Double?
-    let objectType, originalTitle: String
+    let objectType, originalTitle: String?
     let offers: [Offer]?
     let scoring: [Scoring]?
     let originalLanguage: String?
     let ageCertification, shortDescription: String?
-    let maxSeasonNumber: Int
+    let maxSeasonNumber: Int?
     
     enum CodingKeys: String, CodingKey {
         case jwEntityID = "jw_entity_id"
@@ -61,7 +61,7 @@ class Item: Codable {
         case maxSeasonNumber = "max_season_number"
     }
     
-    init(jwEntityID: String, id: Int, title: String, fullPath: String, fullPaths: FullPaths, poster: String?, shortDescription: String?, originalReleaseYear: Int?, tmdbPopularity: Double?, objectType: String, originalTitle: String, offers: [Offer]?, scoring: [Scoring]?, originalLanguage: String?, ageCertification: String?, maxSeasonNumber: Int) {
+    init(jwEntityID: String, id: Int, title: String, fullPath: String, fullPaths: FullPaths, poster: String?, shortDescription: String?, originalReleaseYear: Int?, tmdbPopularity: Double?, objectType: String, originalTitle: String?, offers: [Offer]?, scoring: [Scoring]?, originalLanguage: String?, ageCertification: String?, maxSeasonNumber: Int?) {
         self.jwEntityID = jwEntityID
         self.id = id
         self.title = title
@@ -102,7 +102,9 @@ class Offer: Codable {
     let urls: Urls
     let presentationType: String
     let elementCount, newElementCount: Int
-    let dateCreatedProviderID, dateCreated, country: String
+    let dateCreatedProviderID, dateCreated, country: String?
+    var providerName: String? = nil
+    var providerIconUrl: String? = nil
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -117,7 +119,7 @@ class Offer: Codable {
         case country
     }
     
-    init(type: String, monetizationType: String, providerID: Int, currency: String?, urls: Urls, presentationType: String, elementCount: Int, newElementCount: Int, dateCreatedProviderID: String, dateCreated: String, country: String) {
+    init(type: String, monetizationType: String, providerID: Int, currency: String?, urls: Urls, presentationType: String, elementCount: Int, newElementCount: Int, dateCreatedProviderID: String, dateCreated: String?, country: String, providerName: String, providerIconUrl:String) {
         self.type = type
         self.monetizationType = monetizationType
         self.providerID = providerID
@@ -129,6 +131,8 @@ class Offer: Codable {
         self.dateCreatedProviderID = dateCreatedProviderID
         self.dateCreated = dateCreated
         self.country = country
+        self.providerName = providerName
+        self.providerIconUrl = providerIconUrl
     }
 }
 
