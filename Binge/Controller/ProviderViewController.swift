@@ -45,14 +45,16 @@ class ProviderViewController: UIViewController , UITableViewDelegate, UITableVie
                 cell.providerNameLabel.text = "Provider: Prime Video"
             }else if deepLinkURL.contains("disneyplus"){
                 cell.providerNameLabel.text = "Provider: Disney+"
-
+            }else if deepLinkURL.contains("hbonow"){
+                cell.providerNameLabel.text = "Provider: HBO Now"
             }
+            
             
             cell.standardWeb = provider.urls.standardWeb
         }else{
             cell.providerURL = provider.urls.standardWeb
             
-            var url = URL(string: provider.urls.standardWeb)
+            let url = URL(string: provider.urls.standardWeb)
             var domain = url!.host!
             domain = domain.regex(pattern: pattern).first ?? ""
             cell.providerNameLabel.text = "Provider: \(domain.capitalizingFirstLetter())"
