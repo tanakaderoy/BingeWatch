@@ -26,7 +26,14 @@ class TrendingViewController: UIViewController, UIGestureRecognizerDelegate {
             tvShowListResource?
                 .addObserver(self)
                 .addObserver(statusOverlay, owner: self)
-                .loadIfNeeded()
+                .loadIfNeeded()?.onSuccess({ (entity) in
+                    let results = entity.content as? [TvShowResult]
+                    results?.forEach({ (show) in
+                        print(show.originalName)
+                    })
+                }).onFailure({ (e) in
+                    print(e)
+                })
         }
     }
     private var statusOverlay = ResourceStatusOverlay()
