@@ -14,7 +14,7 @@ DEPENDENCIES:
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Kingfisher
     - Siesta
     - SwiftyJSON
@@ -26,4 +26,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: bfa091dc9f24a790f8530055f0b6969562eb55b9
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4

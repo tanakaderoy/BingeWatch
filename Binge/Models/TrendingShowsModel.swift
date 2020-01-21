@@ -17,13 +17,13 @@ class TrendingShowsModel: Codable {
     let page: Int
     let results: [TvShowResult]
     let totalPages, totalResults: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case page, results
         case totalPages = "total_pages"
         case totalResults = "total_results"
     }
-    
+
     init(page: Int, results: [TvShowResult], totalPages: Int, totalResults: Int) {
         self.page = page
         self.results = results
@@ -33,7 +33,7 @@ class TrendingShowsModel: Codable {
 }
 
 // MARK: - Result
-class TvShowResult: Codable {
+class TvShowResult: Codable, CustomStringConvertible {
     let originalName: String
     let id: Int
     let name: String
@@ -41,12 +41,17 @@ class TvShowResult: Codable {
     let voteAverage: Double
     let firstAirDate, posterPath: String
     let genreIDS: [Int]
-    let originalLanguage: OriginalLanguage
-    let backdropPath, overview: String
-    let originCountry: [OriginCountry]
+    let originalLanguage, backdropPath, overview: String
+    let originCountry: [String]
     let popularity: Double
-    let mediaType: MediaType
-    
+    let mediaType: String
+
+    var description : String {
+        var description = ""
+        description += "name: \(self.originalName)"
+        return description
+    }
+
     enum CodingKeys: String, CodingKey {
         case originalName = "original_name"
         case id, name
@@ -62,8 +67,8 @@ class TvShowResult: Codable {
         case popularity
         case mediaType = "media_type"
     }
-    
-    init(originalName: String, id: Int, name: String, voteCount: Int, voteAverage: Double, firstAirDate: String, posterPath: String, genreIDS: [Int], originalLanguage: OriginalLanguage, backdropPath: String, overview: String, originCountry: [OriginCountry], popularity: Double, mediaType: MediaType) {
+
+    init(originalName: String, id: Int, name: String, voteCount: Int, voteAverage: Double, firstAirDate: String, posterPath: String, genreIDS: [Int], originalLanguage: String, backdropPath: String, overview: String, originCountry: [String], popularity: Double, mediaType: String) {
         self.originalName = originalName
         self.id = id
         self.name = name
@@ -80,19 +85,3 @@ class TvShowResult: Codable {
         self.mediaType = mediaType
     }
 }
-
-enum MediaType: String, Codable {
-    case tv = "tv"
-}
-
-enum OriginCountry: String, Codable {
-    case es = "ES"
-    case gb = "GB"
-    case us = "US"
-}
-
-enum OriginalLanguage: String, Codable {
-    case en = "en"
-    case es = "es"
-}
-
