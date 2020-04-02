@@ -36,20 +36,25 @@ class ProviderViewController: UIViewController , UITableViewDelegate, UITableVie
         let pattern = #"[l-p]\w\w\w\.\w++|[a-d]\w\w\w[m-o]\w|(?<=\.)\w[^com]\w++|itunes|\w\w\w\w\w\w\w\w\w[l-p]\w|(?<=:\/\/)\w\w\w\w\w[^_]|\w[com]\w\w[m-o]\w|amc"#
         cell.providerNameLabel.text = "Provider \(indexPath.row + 1)"
         print("Urls", provider.urls.standardWeb)
-        if let deepLinkURL = provider.urls.deeplinkIos{
+        if let deepLinkURL = provider.urls.deeplinkTvos{
             cell.providerURL = deepLinkURL
             print(deepLinkURL)
             if deepLinkURL.contains("nflx"){
                 cell.providerNameLabel.text = "Provider: Netflix App"
             }else if deepLinkURL.contains("aiv"){
                 cell.providerNameLabel.text = "Provider: Prime Video"
+            }else if deepLinkURL.contains("disneyplus"){
+                cell.providerNameLabel.text = "Provider: Disney+"
+            }else if deepLinkURL.contains("hbonow"){
+                cell.providerNameLabel.text = "Provider: HBO Now"
             }
+            
             
             cell.standardWeb = provider.urls.standardWeb
         }else{
             cell.providerURL = provider.urls.standardWeb
             
-            var url = URL(string: provider.urls.standardWeb)
+            let url = URL(string: provider.urls.standardWeb)
             var domain = url!.host!
             domain = domain.regex(pattern: pattern).first ?? ""
             cell.providerNameLabel.text = "Provider: \(domain.capitalizingFirstLetter())"
