@@ -3,7 +3,7 @@
 //  Binge
 //
 //  Created by Tanaka Mazivanhanga on 10/1/19.
-//  Copyright © 2019 Tanaka Mazivanhanga. All rights reserved.
+//  Copyright © 2019 Tanaka Mazivanhanga. All rights reserved..
 //
 
 import Siesta
