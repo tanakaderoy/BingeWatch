@@ -5,7 +5,8 @@ project 'Binge.xcodeproj'
 
 target 'Binge' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+#  use_frameworks!
+use_modular_headers!
   pod 'Siesta', '~> 1.0'
   pod 'Siesta/UI', '~> 1.0'
   pod 'Kingfisher'

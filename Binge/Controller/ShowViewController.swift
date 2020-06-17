@@ -86,7 +86,7 @@ class ShowViewController: UIViewController {
     @IBAction func bingeButtonPressed(_ sender: UIButton) {
         if let season = seasons.randomElement(), let seasonNumber = season.seasonNumber, let episodeCount = season.episodeCount{
             randomEpisode = String(arc4random_uniform(UInt32(episodeCount)) + 1)
-            sentSeasonNo = String(seasonNumber)
+            sentSeasonNo = seasonNumber == 0 ? String(arc4random_uniform(UInt32(seasons.count))+2): String(seasonNumber)
 
 
             
