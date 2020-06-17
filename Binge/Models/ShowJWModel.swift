@@ -38,7 +38,7 @@ class Item: Codable {
     let originalReleaseYear: Int
     let tmdbPopularity: Double
     let objectType: String
-    let offers: [Offer]
+    let offers: [Offer]?
     let scoring: [Scoring]
 
     enum CodingKeys: String, CodingKey {
@@ -50,7 +50,8 @@ class Item: Codable {
         case originalReleaseYear = "original_release_year"
         case tmdbPopularity = "tmdb_popularity"
         case objectType = "object_type"
-        case offers, scoring
+        case offers = "offers"
+        case scoring
     }
 
     init(jwEntityID: String, id: Int, title: String, fullPath: String, fullPaths: FullPaths, poster: String, originalReleaseYear: Int, tmdbPopularity: Double, objectType: String, offers: [Offer], scoring: [Scoring]) {

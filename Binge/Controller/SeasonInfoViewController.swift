@@ -32,8 +32,12 @@ class SeasonInfoViewController: UIViewController {
                 self.episodes = season.episodes
                 navigationItem.title = "Season \(season.seasonNumber ?? 0)"
                 if let episode = episode{
-                    print("Episode: ", episodes[Int(episode)!].name)
-                    let indexPath = IndexPath(row: Int(episode) ?? 0, section: 0)
+
+                    guard let epIdx = Int(episode) else {return}
+
+                    let index = epIdx-1
+                     print("Episode: ", episodes[index].name)
+                    let indexPath = IndexPath(row: index, section: 0)
                     tableView.scrollToRow(at: indexPath, at: .top, animated: true)
                 }
                 
